@@ -14,7 +14,7 @@
  * Calculates whether the coordinate ( x , y ) is within the bounds of the circle with
  * the radius provided.
  * Uses Pythagoras' Theorem: a^2 + b^2 = c^2 to calculate length of point to the
- * center of the circle
+ * center of the circle. Returns boolean c^2 < r^2 where r is the radius of the circle
  *
  * @param radius - Radius of the circle to check.
  * @param x      - The x coordinate of the point to check is in the circle
@@ -50,6 +50,8 @@ double calculateCircleArea(double radius, int pointCount){
         }
     }
 
+    // Returns the area of the circle calculated by:
+    // percentage of points in circle * area of the circle's smallest enclosing square
     return ((double)circlePoints/(double)pointCount)*4*radius*radius;
 }
 /*
@@ -61,13 +63,14 @@ double calculateCircleArea(double radius, int pointCount){
  * @param argc - Number of command line arguments provided
  * @param *argv[] - array of pointers to the command line arguments
  *        argv[0] - The name of the this executable file.
- *        argv[1] - [Optional] number of point to iterate through
+ *        argv[1] - [Optional] number of points to iterate through
  *        argv[2] - [Optional] radius of the circle to calculate
  *
  * @return int of how program exits
  */
 int main(int argc, char *argv[]) {
-    int pointCount = 100;
+    // Default Values, used if not arguments provided
+    int pointCount = 100000;
     double radius = 1.0;
 
     // Retrieving Arguments

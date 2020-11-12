@@ -154,32 +154,86 @@ lab.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\lab.c.s
 .PHONY : lab.c.s
 
-main.obj: main.c.obj
+stage1.obj: stage1.c.obj
 
-.PHONY : main.obj
+.PHONY : stage1.obj
 
 # target to build an object file
-main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\main.c.obj
-.PHONY : main.c.obj
+stage1.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage1.c.obj
+.PHONY : stage1.c.obj
 
-main.i: main.c.i
+stage1.i: stage1.c.i
 
-.PHONY : main.i
+.PHONY : stage1.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\main.c.i
-.PHONY : main.c.i
+stage1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage1.c.i
+.PHONY : stage1.c.i
 
-main.s: main.c.s
+stage1.s: stage1.c.s
 
-.PHONY : main.s
+.PHONY : stage1.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\main.c.s
-.PHONY : main.c.s
+stage1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage1.c.s
+.PHONY : stage1.c.s
+
+stage2.obj: stage2.c.obj
+
+.PHONY : stage2.obj
+
+# target to build an object file
+stage2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage2.c.obj
+.PHONY : stage2.c.obj
+
+stage2.i: stage2.c.i
+
+.PHONY : stage2.i
+
+# target to preprocess a source file
+stage2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage2.c.i
+.PHONY : stage2.c.i
+
+stage2.s: stage2.c.s
+
+.PHONY : stage2.s
+
+# target to generate assembly for a file
+stage2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage2.c.s
+.PHONY : stage2.c.s
+
+stage3.obj: stage3.c.obj
+
+.PHONY : stage3.obj
+
+# target to build an object file
+stage3.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage3.c.obj
+.PHONY : stage3.c.obj
+
+stage3.i: stage3.c.i
+
+.PHONY : stage3.i
+
+# target to preprocess a source file
+stage3.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage3.c.i
+.PHONY : stage3.c.i
+
+stage3.s: stage3.c.s
+
+.PHONY : stage3.s
+
+# target to generate assembly for a file
+stage3.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\stage3.c.s
+.PHONY : stage3.c.s
 
 # Help Target
 help:
@@ -193,9 +247,15 @@ help:
 	@echo ... lab.obj
 	@echo ... lab.i
 	@echo ... lab.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... stage1.obj
+	@echo ... stage1.i
+	@echo ... stage1.s
+	@echo ... stage2.obj
+	@echo ... stage2.i
+	@echo ... stage2.s
+	@echo ... stage3.obj
+	@echo ... stage3.i
+	@echo ... stage3.s
 .PHONY : help
 
 
