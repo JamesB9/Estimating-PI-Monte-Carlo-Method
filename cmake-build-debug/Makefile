@@ -127,6 +127,33 @@ OS2_Coursework\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\build
 .PHONY : OS2_Coursework\fast
 
+lab.obj: lab.c.obj
+
+.PHONY : lab.obj
+
+# target to build an object file
+lab.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\lab.c.obj
+.PHONY : lab.c.obj
+
+lab.i: lab.c.i
+
+.PHONY : lab.i
+
+# target to preprocess a source file
+lab.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\lab.c.i
+.PHONY : lab.c.i
+
+lab.s: lab.c.s
+
+.PHONY : lab.s
+
+# target to generate assembly for a file
+lab.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OS2_Coursework.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\OS2_Coursework.dir\lab.c.s
+.PHONY : lab.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -163,6 +190,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... OS2_Coursework
+	@echo ... lab.obj
+	@echo ... lab.i
+	@echo ... lab.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

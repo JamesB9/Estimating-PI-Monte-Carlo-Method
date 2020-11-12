@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/OS2_Coursework.dir/lab.c.obj"
   "CMakeFiles/OS2_Coursework.dir/main.c.obj"
   "OS2_Coursework.exe"
   "OS2_Coursework.exe.manifest"

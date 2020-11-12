@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/lab.c">
+			<Option target="OS2_Coursework"/>
+		</Unit>
 		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/main.c">
 			<Option target="OS2_Coursework"/>
 		</Unit>
