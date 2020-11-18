@@ -3,4 +3,4 @@ project(OS2_Coursework C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(OS2_Coursework stage1.c stage2.c stage3.c lab.c)
+add_executable(OS2_Coursework stage1.c)

@@ -82,16 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/lab.c">
-			<Option target="OS2_Coursework"/>
-		</Unit>
 		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/stage1.c">
-			<Option target="OS2_Coursework"/>
-		</Unit>
-		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/stage2.c">
-			<Option target="OS2_Coursework"/>
-		</Unit>
-		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/stage3.c">
 			<Option target="OS2_Coursework"/>
 		</Unit>
 		<Unit filename="C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/CMakeLists.txt">
