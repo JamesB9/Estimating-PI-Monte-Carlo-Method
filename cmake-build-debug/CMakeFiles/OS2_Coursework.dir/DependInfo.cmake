@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/stage1.c" "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/OS2_Coursework.dir/stage1.c.obj"
+  "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/stage2.c" "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/OS2_Coursework.dir/stage2.c.obj"
+  "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/stage3.c" "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/OS2_Coursework.dir/stage3.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 

@@ -99,7 +99,10 @@ double calculateCircleArea(int pointCount, int threadCount, double radius){
         workspaces[i].radius = &radius;
         workspaces[i].seed = initialSeed + i;
 
-        pthread_create(&(workerThreads[i]), NULL, calculateCirclePoints, &workspaces[i]);
+        int status = pthread_create(&(workerThreads[i]), NULL, calculateCirclePoints, &workspaces[i]);
+        if(status != 0){
+            perror("Error creating Thread: ");
+        }
     }
 
     for(int i = 0; i < threadCount; i++) {
@@ -123,9 +126,11 @@ double calculateCircleArea(int pointCount, int threadCount, double radius){
  * @param argc - Number of command line arguments provided
  * @param *argv[] - array of pointers to the command line arguments
  *        argv[0] - The name of the this executable file.
- *        argv[1] - [Optional] number of points to iterate through
- *        argv[2] - [Optional] number of worker threads to create
- *        argv[3] - [Optional] radius of the circle to calculate
+ *        argv[1...n]:
+ *          [-p] number of points to iterate through
+ *          [-t] number of worker threads to create
+ *          [-r] radius of the circle to calculate
+ *          [-c] calculate and display execution time
  *
  * @return int of how program exits
  */
@@ -134,31 +139,43 @@ int main(int argc, char *argv[]) {
     int pointCount = 100000;
     int threadCount = 10;
     double radius = 1.0;
+    int timer = 0;
+    int c;
 
     // Retrieving Arguments
-    switch(argc){
-        case 4:
-            radius = atof(argv[3]);
-        case 3:
-            threadCount = atoi(argv[2]);
-        case 2:
-            pointCount = atoi(argv[1]);
-        default:
-            printf("Number of Points = %d, Number of Threads = %d, Circle Radius = %f\n",
-                   pointCount, threadCount,radius);
+    while ((c = getopt(argc, argv, "p:t:r:c")) != -1){
+        switch(c){
+            case 'p': // Point Count
+                pointCount = atoi(optarg);
+                break;
+            case 't': // Thread Count
+                threadCount = atoi(optarg);
+                break;
+            case 'r': // Radius
+                radius = atof(optarg);
+                break;
+            case 'c': // Clock (timer)
+                timer = 1;
+                break;
+        }
     }
 
-
     struct timespec startTime, endTime;
-    clock_gettime(CLOCK_REALTIME, &startTime);
+
+    if(timer) {
+        clock_gettime(CLOCK_REALTIME, &startTime);
+    }
 
     double area = calculateCircleArea(pointCount, threadCount, radius);
+
+    printf("Number of Points = %d, Number of Threads = %d, Circle Radius = %f\n",pointCount, threadCount,radius);
     printf("The Area of the circle is: %f\n", area);
 
-    clock_gettime(CLOCK_REALTIME, &endTime);
-    double elapsedTime = (endTime.tv_sec - startTime.tv_sec) +
-            (endTime.tv_nsec - startTime.tv_nsec) / 1000000000.0;
-    printf("Elapsed Time: %f seconds\n", elapsedTime);
-
+    if(timer) {
+        clock_gettime(CLOCK_REALTIME, &endTime);
+        double elapsedTime = (endTime.tv_sec - startTime.tv_sec) +
+                             (endTime.tv_nsec - startTime.tv_nsec) / 1000000000.0;
+        printf("Elapsed Time: %f seconds\n", elapsedTime);
+    }
     return EXIT_SUCCESS;
 }

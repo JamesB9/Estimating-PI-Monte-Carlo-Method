@@ -20,10 +20,12 @@
 typedef struct WorkspaceStruct{
     int pointCount;
     int seed;
+    int id;
 }Workspace;
 
 // Global Variables : accessed/shared by all threads
 double radius = 1;
+int verbose = 0;
 volatile int circlePoints = 0, available = 1;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t condvar = PTHREAD_COND_INITIALIZER;
@@ -36,13 +38,12 @@ pthread_cond_t condvar = PTHREAD_COND_INITIALIZER;
  * Uses Pythagoras' Theorem: a^2 + b^2 = c^2 to calculate length of point to the
  * center of the circle. Returns boolean c^2 < r^2 where r is the radius of the circle
  *
- * @param radius - Radius of the circle to check.
  * @param x      - The x coordinate of the point to check is in the circle
  * @param y      - The y coordinate of the point to check is in the circle
  *
  * @return int of 1 if coordinate (x,y) is within the circle, otherwise returns 0
  */
-int isInCircle(double radius, double x, double y){
+int isInCircle(double x, double y){
     return (x*x) + (y*y) < (radius*radius);
 }
 
@@ -58,30 +59,32 @@ int isInCircle(double radius, double x, double y){
  */
 void* calculateCirclePoints(void *ws){
     Workspace *workspace = (Workspace*) ws;
-    int localCirclePoints = 0;
 
     for(int i = 0; i < workspace->pointCount; i++){
         double x = ((double)rand_r(&workspace->seed)*2 / (double)RAND_MAX) - 1; // Random double between -1 and 1
         double y = ((double)rand_r(&workspace->seed)*2 / (double)RAND_MAX) - 1; // Random double between -1 and 1
 
-        if(isInCircle(radius, x, y)){
-            localCirclePoints++;
+        if(isInCircle(x, y)){ // If Random Coordinate is inside circle area
+            pthread_mutex_lock(&mutex); // Locks the mutex
+
+            while(available == 0){ // If another thread is updating circle points then wait
+                if(verbose){printf("Thread %d - WAITING\n", workspace->id);}
+                pthread_cond_wait(&condvar, &mutex); // Wait until signalled
+            }
+
+            // Change variables protected by mutex
+            available = 0;
+            circlePoints++;
+
+            if(verbose){printf("Thread %d - ADDED - Total Circle Points = %d\n", workspace->id, circlePoints);}
+
+            // Unlock mutex allowing other thread to alter circlePoints
+            pthread_mutex_unlock(&mutex);
+            available = 1;
+            // Signal for another thread to start
+            pthread_cond_signal(&condvar);
         }
     }
-
-    // Update global circlePoints
-    pthread_mutex_lock(&mutex);
-    //printf("thread (seed=%d) waiting\n", workspace->seed);
-    while(available == 0){
-        pthread_cond_wait(&condvar, &mutex);
-    }
-    available = 0;
-    circlePoints += localCirclePoints;
-    //printf("thread (seed=%d) added %d points - Total = %d\n", workspace->seed, localCirclePoints, circlePoints);
-
-    pthread_mutex_unlock(&mutex);
-    //printf("thread (seed=%d) released\n", workspace->seed);
-    available = 1;
 
     return NULL;
 }
@@ -110,8 +113,12 @@ double calculateCircleArea(int pointCount, int threadCount){
     for(int i = 0; i < threadCount; i++) {
         workspaces[i].pointCount = pointsPerThread + (i < remainingPoints);
         workspaces[i].seed = initialSeed + i;
+        workspaces[i].id = i;
 
-        pthread_create(&(workerThreads[i]), NULL, calculateCirclePoints, &workspaces[i]);
+        int status = pthread_create(&(workerThreads[i]), NULL, calculateCirclePoints, &workspaces[i]);
+        if(status != 0){
+            perror("Error creating Thread: ");
+        }
     }
 
     for(int i = 0; i < threadCount; i++) {
@@ -134,9 +141,12 @@ double calculateCircleArea(int pointCount, int threadCount){
  * @param argc - Number of command line arguments provided
  * @param *argv[] - array of pointers to the command line arguments
  *        argv[0] - The name of the this executable file.
- *        argv[1] - [Optional] number of points to iterate through
- *        argv[2] - [Optional] number of worker threads to create
- *        argv[3] - [Optional] radius of the circle to calculate
+ *        argv[1...n]:
+ *          [-p] number of points to iterate through
+ *          [-t] number of worker threads to create
+ *          [-r] radius of the circle to calculate
+ *          [-c] calculate and display execution time
+ *          [-v] print out when each thread add a circle point
  *
  * @return int of how program exits
  */
@@ -144,31 +154,48 @@ int main(int argc, char *argv[]) {
     // Default Values, used if not arguments provided
     int pointCount = 100000;
     int threadCount = 10;
+    int timer = 0;
+    int c;
 
     // Retrieving Arguments
-    switch(argc){
-        case 4:
-            radius = atof(argv[3]);
-        case 3:
-            threadCount = atoi(argv[2]);
-        case 2:
-            pointCount = atoi(argv[1]);
-        default:
-            printf("Number of Points = %d, Number of Threads = %d, Circle Radius = %f\n",
-                   pointCount, threadCount,radius);
+    while ((c = getopt(argc, argv, "p:t:r:cv")) != -1){
+        switch(c){
+            case 'p': // Point Count
+                pointCount = atoi(optarg);
+                break;
+            case 't': // Thread Count
+                threadCount = atoi(optarg);
+                break;
+            case 'r': // Radius
+                radius = atof(optarg);
+                break;
+            case 'c': // Clock (timer)
+                timer = 1;
+                break;
+            case 'v': // Verbose (extra information)
+                verbose = 1;
+                break;
+        }
     }
 
 
     struct timespec startTime, endTime;
-    clock_gettime(CLOCK_REALTIME, &startTime);
+    if(timer) {
+        clock_gettime(CLOCK_REALTIME, &startTime); // Get the start time
+    }
 
-    double area = calculateCircleArea(pointCount, threadCount);
+    double area = calculateCircleArea(pointCount, threadCount); // Calculate the area of the circle
+
+    // Print Results
+    printf("Number of Points = %d, Number of Threads = %d, Circle Radius = %f\n", pointCount, threadCount,radius);
     printf("The Area of the circle is: %f\n", area);
 
-    clock_gettime(CLOCK_REALTIME, &endTime);
-    double elapsedTime = (endTime.tv_sec - startTime.tv_sec) +
-            (endTime.tv_nsec - startTime.tv_nsec) / 1000000000.0;
-    printf("Elapsed Time: %f seconds\n", elapsedTime);
+    if(timer) {
+        clock_gettime(CLOCK_REALTIME, &endTime); // Get the time at the end of the algorithm
+        double elapsedTime = (endTime.tv_sec - startTime.tv_sec) + // Calculate the diff in time between start and end
+                             (endTime.tv_nsec - startTime.tv_nsec) / 1000000000.0;
+        printf("Elapsed Time: %f seconds\n", elapsedTime);
+    }
 
     return EXIT_SUCCESS;
 }

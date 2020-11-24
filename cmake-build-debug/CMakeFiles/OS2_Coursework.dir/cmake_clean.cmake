@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/OS2_Coursework.dir/stage1.c.obj"
+  "CMakeFiles/OS2_Coursework.dir/stage2.c.obj"
+  "CMakeFiles/OS2_Coursework.dir/stage3.c.obj"
   "OS2_Coursework.exe"
   "OS2_Coursework.exe.manifest"
   "OS2_Coursework.lib"
