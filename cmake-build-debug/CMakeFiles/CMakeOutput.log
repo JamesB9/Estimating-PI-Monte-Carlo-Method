@@ -21,29 +21,29 @@ Compilation of the C compiler identification source "CMakeCCompilerId.c" produce
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
 
-The C compiler identification is MSVC, found in "C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.exe"
+The C compiler identification is MSVC, found in "C:/Users/JamesBurling/Documents 2/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.exe"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/JamesBurling/Documents 2/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_10841\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.26.28801\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_10841.dir\build.make /nologo -L                  CMakeFiles\cmTC_10841.dir\build
-Building C object CMakeFiles/cmTC_10841.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\cl.exe @C:\Users\JAMESB~1\AppData\Local\Temp\nm7AB5.tmp
+Run Build Command(s):nmake /nologo cmTC_dfd58\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.26.28801\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_dfd58.dir\build.make /nologo -L                  CMakeFiles\cmTC_dfd58.dir\build
+Building C object CMakeFiles/cmTC_dfd58.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\cl.exe @C:\Users\JAMESB~1\AppData\Local\Temp\nm7175.tmp
 testCCompiler.c
-Linking C executable cmTC_10841.exe
-	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_10841.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_10841.dir\objects1.rsp @C:\Users\JAMESB~1\AppData\Local\Temp\nm7BFE.tmp
+Linking C executable cmTC_dfd58.exe
+	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_dfd58.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_dfd58.dir\objects1.rsp @C:\Users\JAMESB~1\AppData\Local\Temp\nm72ED.tmp
 
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/JamesBurling/Documents/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/JamesBurling/Documents 2/GitHub/OS2-Coursework/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_efb17\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.26.28801\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_efb17.dir\build.make /nologo -L                  CMakeFiles\cmTC_efb17.dir\build
-Building C object CMakeFiles/cmTC_efb17.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\cl.exe @C:\Users\JAMESB~1\AppData\Local\Temp\nm7DF1.tmp
+Run Build Command(s):nmake /nologo cmTC_d4ca3\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.26.28801\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_d4ca3.dir\build.make /nologo -L                  CMakeFiles\cmTC_d4ca3.dir\build
+Building C object CMakeFiles/cmTC_d4ca3.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\cl.exe @C:\Users\JAMESB~1\AppData\Local\Temp\nm74EF.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_efb17.exe
-	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_efb17.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_efb17.dir\objects1.rsp @C:\Users\JAMESB~1\AppData\Local\Temp\nm7E40.tmp
+Linking C executable cmTC_d4ca3.exe
+	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_d4ca3.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MIB055~1\2019\BUILDT~1\VC\Tools\MSVC\1426~1.288\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_d4ca3.dir\objects1.rsp @C:\Users\JAMESB~1\AppData\Local\Temp\nm753E.tmp
 
 
 

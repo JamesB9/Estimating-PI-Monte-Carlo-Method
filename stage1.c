@@ -1,6 +1,6 @@
 /* STAGE1.C
  *
- * Author: James Burling
+ * Author: James
  * Date: 12/11/2020
  * Last Modified: 12/11/2020
  *
